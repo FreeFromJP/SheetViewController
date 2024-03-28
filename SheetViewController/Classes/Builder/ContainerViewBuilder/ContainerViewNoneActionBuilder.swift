@@ -28,12 +28,12 @@ class NoneContainerConfigurationBuilder: ContainerConfigurationBuilder {
     switch type {
     case .center:
       var configuration = ContainerConfiguration.default
-      configuration.contentCornerRadius = 12
+//      configuration.contentCornerRadius = 12
       return configuration
     case .bottom:
       var configuration = ContainerConfiguration.default
       configuration.outerSpacing = CGSize(width: 8, height: 24)
-      configuration.contentCornerRadius = 12
+//      configuration.contentCornerRadius = 12
       return configuration
     }
   }

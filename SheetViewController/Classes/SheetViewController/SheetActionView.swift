@@ -24,26 +24,20 @@ import UIKit
 
 public class SheetActionView: ClickableView, ActionView {
   //MARK: properties
+  private var configuration: SheetContainerConfiguration
   public var textLabel: UILabel?
   public var handler: ActionButtonTouchUpInsideHandler?
-
-  private var _textColor: UIColor?
   
   //MARK: inits
-  override public init(frame: CGRect) {
-    super.init(frame: frame)
-    setup()
-  }
   
-  internal required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  public init(frame: CGRect = .zero, title: String?, color: UIColor?) {
+  public init(frame: CGRect = .zero, title: String?, configuration: SheetContainerConfiguration) {
+    self.configuration = configuration
     super.init(frame: frame)
-    self._textColor = color
     setup(with: title)
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
 
@@ -52,7 +46,7 @@ fileprivate extension SheetActionView {
   private func setup(with title: String? = nil) {
     clickHandler = { [weak self] view in self?.handler?() }
     
-    let label = UILabel.label(with: title, color: _textColor, type: .cancelAction)
+    let label = UILabel.label(with: title, type: .cancelAction, config: configuration)
     addSubview(label)
     label.addAllSidesAnchors(to: self)
     self.textLabel = label

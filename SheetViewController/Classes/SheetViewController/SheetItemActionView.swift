@@ -85,7 +85,12 @@ public class SheetItemActionView: ClickableView, ItemActionView {
 //MARK: - Fileprivate extension of SheetItemActionView
 fileprivate extension SheetItemActionView {
   private func setup(with title: String? = nil, image: UIImage? = nil) {
-    let label = UILabel.label(with: title, color: _textColor, type: .action)
+    let label = UILabel(frame: .zero)
+    label.font = .systemFont(ofSize: 16, weight: .medium)
+    label.textAlignment = .center
+    label.textColor = _textColor
+    label.numberOfLines = 2
+    label.text = title
     addSubview(label)
     
     let imageView = UIImageView(frame: .zero)

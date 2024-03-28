@@ -127,6 +127,8 @@ open class SheetViewController: UIViewController, SheetController {
     closeSheet()
   }
   
+  /// View height must use `AutoLayout`, frame is invalid
+  /// - Parameter view: UIView
   open func addView(_ view: UIView) {
     containerView?.content?.addBodyView(view)
   }

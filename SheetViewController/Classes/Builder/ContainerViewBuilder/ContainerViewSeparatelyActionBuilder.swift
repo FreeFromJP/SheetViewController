@@ -29,13 +29,13 @@ class SeparatelyContainerConfigurationBuilder: ContainerConfigurationBuilder {
     case .center:
       var configuration = ContainerConfiguration.default
       configuration.innerActionSpacing = CGSize(width: 0, height: 8)
-      configuration.contentCornerRadius = 12
+//      configuration.contentCornerRadius = 12
       return configuration
     case .bottom:
       var configuration = ContainerConfiguration.default
       configuration.outerSpacing = CGSize(width: 8, height: 24)
       configuration.innerActionSpacing = CGSize(width: 0, height: 8)
-      configuration.contentCornerRadius = 12
+//      configuration.contentCornerRadius = 12
       return configuration
     }
   }

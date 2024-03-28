@@ -81,9 +81,10 @@ fileprivate extension SheetContentView {
     headerStack?.isLayoutMarginsRelativeArrangement = true
     headerStack?.axis = .vertical
     headerStack?.isHidden = true
+    headerStack?.clipsToBounds = false
     
     headerStack?.layoutMargins = UIEdgeInsets(
-      top: configuration.innerHeaderSpacing.height,
+      top: configuration.innerHeaderSpacing.height + configuration.outerHeaderTopSpacing,
       left: configuration.innerHeaderSpacing.width,
       bottom: configuration.innerHeaderSpacing.height,
       right: configuration.innerHeaderSpacing.width
@@ -91,8 +92,10 @@ fileprivate extension SheetContentView {
   
     let contentStack = UIStackView(frame: .zero)
     contentStack.axis = .vertical
+    contentStack.clipsToBounds = false
     
     scrollView = UIScrollView(frame: .zero)
+    scrollView?.clipsToBounds = false
     scrollView?.delegate = self
     scrollView?.addSubview(contentStack)
     
@@ -127,10 +130,11 @@ fileprivate extension SheetContentView {
     
     let stack = UIStackView(frame: .zero)
     stack.axis = .vertical
+    stack.clipsToBounds = false
     
     if let headerStack = headerStack {
       stack.addArrangedSubview(headerStack)
-      if configuration.isSeparatorLineShowed {
+      if configuration.headerSeparatorLineShowed {
         let separatorView = SheetSeparatorView.create(with: configuration.separatorColor)
         stack.addArrangedSubview(separatorView)
       }

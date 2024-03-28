@@ -28,7 +28,11 @@ public protocol SheetContainerConfiguration {
   var portraitTopOuterMultiplier: CGFloat { get set }
   var landscapeHorizontalOuterDivider: CGFloat { get set }
 
+  /// In header, spaceing of title and message
   var headerVerticalSpacing: CGFloat { get set }
+  
+  /// outer header top spacing
+  var outerHeaderTopSpacing: CGFloat { get set }
   
   var innerContentSpacing: CGSize { get set }
   var innerHeaderSpacing: CGSize { get set }
@@ -42,11 +46,22 @@ public protocol SheetContainerConfiguration {
   
   var backgroundColor: UIColor { get set }
   var headerTextColor: UIColor { get set }
+  var messageTextColor: UIColor { get set }
   var actionBackgroundColor: UIColor { get set }
   var actionTextColor: UIColor { get set }
-  var actionTextFont: UIFont { get set }
   var transitionBackgroundColor: UIColor { get set }
   
+  var headerSeparatorLineShowed: Bool { get set }
   var isSeparatorLineShowed: Bool { get set }
   var separatorColor: UIColor { get set }
+  
+
+  // MARK: Font
+  var headerTextFont: UIFont { get set }
+  var messageTextFont: UIFont { get set }
+  var actionTextFont: UIFont { get set }
+  
+  // MARK: Alignment
+  var headerTextAlignment: NSTextAlignment { get set }
+  var messageTextAlignment: NSTextAlignment { get set }
 }
