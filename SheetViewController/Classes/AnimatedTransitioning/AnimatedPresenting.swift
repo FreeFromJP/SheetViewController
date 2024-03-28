@@ -29,7 +29,7 @@ class AnimatedPresenting: NSObject {
   }
   
   //MARK: properties
-  let duration: TimeInterval = 0.64
+  let duration: TimeInterval = 0.3
   let delay: TimeInterval = .zero
   var transitionBackgroundColor: UIColor?
 }
@@ -55,7 +55,7 @@ extension AnimatedPresenting: UIViewControllerAnimatedTransitioning {
     containerView.bringSubviewToFront(fromView)
     
     UIView.animate(
-      withDuration: duration / 2,
+      withDuration: duration,
       delay: delay,
       options: .curveEaseIn,
       animations: { [weak self] in
@@ -67,12 +67,17 @@ extension AnimatedPresenting: UIViewControllerAnimatedTransitioning {
     alertView.frame.origin.x = .zero
     alertView.frame.origin.y = fromView.bounds.height
 
-    UIView.dampingAnimate(
-      duration: duration,
-      animations: {
-        alertView.frame = initialAlertFrame
-    }, completion: { _ in
+    UIView.animate(withDuration: duration, delay: delay) {
+      alertView.frame = initialAlertFrame
+    } completion: { _ in
       transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
-    })
+    }
+//    UIView.dampingAnimate(
+//      duration: duration,
+//      animations: {
+//        alertView.frame = initialAlertFrame
+//    }, completion: { _ in
+//      transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+//    })
   }
 }

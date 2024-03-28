@@ -39,7 +39,7 @@ class SheetActionViewBuilder: ViewBuilder {
   //MARK: methods
   @discardableResult
   func create() -> ActionView {
-    let action = SheetActionView(title: actionTitle, color: configuration.actionTextColor)
+    let action = SheetActionView(title: actionTitle, configuration: configuration)
     parent.addSubview(action)
     action.textLabel?.font = configuration.actionTextFont
     action.backgroundColor = configuration.actionBackgroundColor

@@ -43,14 +43,26 @@ extension UILabel {
   }
   
   //MARK: methods
-  public static func label(with text: String?, color: UIColor?, type: TextType) -> UILabel {
+  public static func label(with text: String?, type: TextType, config: SheetContainerConfiguration) -> UILabel {
     let fontSize = type.isAction() ?
       Configuration.actionFontSize :
       Configuration.textFontSize
-        
-    let font = type.isBold() ?
-      UIFont.boldSystemFont(ofSize: fontSize) :
-      UIFont.systemFont(ofSize: fontSize)
+    
+    var font = UIFont.systemFont(ofSize: fontSize)
+    var color: UIColor = .black
+    var alignment: NSTextAlignment = .center
+    if type.isAction() {
+      font = config.actionTextFont
+      color = config.actionTextColor
+    } else if type == .message {
+      font = config.messageTextFont
+      color = config.messageTextColor
+      alignment = config.messageTextAlignment
+    } else if type == .title {
+      font = config.headerTextFont
+      color = config.headerTextColor
+      alignment = config.headerTextAlignment
+    }
     
     let lines = (type == .action) ?
       Configuration.actionNumberOfLines :
@@ -58,7 +70,7 @@ extension UILabel {
     
     let label = UILabel(frame: .zero)
     label.font = font
-    label.textAlignment = .center
+    label.textAlignment = alignment
     label.textColor = color
     label.numberOfLines = lines
     label.text = text

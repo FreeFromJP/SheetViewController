@@ -46,8 +46,9 @@ class SheetContentViewBuilder: ViewBuilder {
     parent.addSubview(content)
     content.backgroundColor = configuration.backgroundColor
     content.layer.cornerRadius = configuration.contentCornerRadius
-    content.layer.masksToBounds = true
+//    content.layer.masksToBounds = true
     content.translatesAutoresizingMaskIntoConstraints = false
+    content.clipsToBounds = false
     
     content.heightAnchor.constraint(
       greaterThanOrEqualToConstant: 1
@@ -74,13 +75,13 @@ class SheetContentViewBuilder: ViewBuilder {
     
     if let headerTitle = headerTitle {
       content.addHeaderView(
-        UILabel.label(with: headerTitle, color: configuration.headerTextColor, type: .title)
+        UILabel.label(with: headerTitle, type: .title, config: configuration)
       )
     }
     
     if let headerMessage = headerMessage {
       content.addHeaderView(
-        UILabel.label(with: headerMessage, color: configuration.headerTextColor, type: .message)
+        UILabel.label(with: headerMessage, type: .message, config: configuration)
       )
     }
     return content
