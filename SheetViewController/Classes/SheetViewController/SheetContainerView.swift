@@ -23,6 +23,19 @@
 import UIKit
 
 public class SheetContainerView: UIView, ContainerView {
-  public var content: ContentView?
-  public var action: ActionView?
+    public var content: ContentView?
+    public var action: ActionView?
+
+    var containerCornerRadius: CGFloat = 0
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        let path = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: [.topLeft, .topRight],
+            cornerRadii: CGSize(width: containerCornerRadius, height: containerCornerRadius)
+        )
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
 }

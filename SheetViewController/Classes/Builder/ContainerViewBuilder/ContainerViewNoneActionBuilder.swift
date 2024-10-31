@@ -106,8 +106,9 @@ class ContainerCenterViewNoneActionBuilder: ContainerViewBuilder {
     let container = SheetContainerView(frame: .zero)
     parent.addSubview(container)
     container.backgroundColor = configuration.backgroundColor
-    container.layer.cornerRadius = configuration.containerCornerRadius
-    container.layer.masksToBounds = true
+    container.containerCornerRadius = configuration.containerCornerRadius
+//    container.layer.cornerRadius = configuration.containerCornerRadius
+//    container.layer.masksToBounds = true
     container.translatesAutoresizingMaskIntoConstraints = false
     
     container.rightAnchor.constraint(
@@ -169,8 +170,9 @@ class ContainerBottomViewNoneActionBuilder: ContainerViewBuilder {
     let container = SheetContainerView(frame: .zero)
     parent.addSubview(container)
     container.backgroundColor = configuration.backgroundColor
-    container.layer.cornerRadius = configuration.containerCornerRadius
-    container.layer.masksToBounds = true
+    container.containerCornerRadius = configuration.containerCornerRadius
+//    container.layer.cornerRadius = configuration.containerCornerRadius
+//    container.layer.masksToBounds = true
     container.translatesAutoresizingMaskIntoConstraints = false
 
     container.rightAnchor.constraint(
